@@ -1,0 +1,19 @@
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+
+# Mono-specific ignores
+.mono/
+data_*/
+
+# System/tool-specific ignores
+.directory
+*~
+Thumbs.db
+*.blend?
+
+# Project-specific ignores
+/Content-Files/Textures/*.png
+/Renders/
