@@ -1,9 +1,18 @@
 extends KinematicBody2D
 
-var velocity = Vector2(150, 200)
+var startPos
+var velocity
 
 func _ready():
-	pass # Replace with function body.
+	startPos = position
+	reset()
+
+
+func reset():
+	position = startPos
+	var randDegrees = (randi()%4) * 90
+	velocity = Vector2(200,200).rotated(deg2rad(randDegrees))
+
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)

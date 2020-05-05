@@ -25,6 +25,13 @@ window/size/width=720
 window/size/height=480
 window/size/resizable=false
 
+[layer_names]
+
+2d_physics/layer_1="walls"
+2d_physics/layer_2="goals"
+2d_physics/layer_3="paddles"
+2d_physics/layer_4="puck"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

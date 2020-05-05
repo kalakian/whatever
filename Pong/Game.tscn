@@ -13,37 +13,53 @@ extents = Vector2( 10, 240 )
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Borders" type="Node2D" parent="."]
+[node name="Walls" type="Node2D" parent="."]
 
-[node name="Top" type="StaticBody2D" parent="Borders"]
+[node name="Top" type="StaticBody2D" parent="Walls"]
 position = Vector2( 360, -10 )
+collision_mask = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top"]
 shape = SubResource( 1 )
 
-[node name="Bottom" type="StaticBody2D" parent="Borders"]
+[node name="Bottom" type="StaticBody2D" parent="Walls"]
 position = Vector2( 360, 490 )
+collision_mask = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Bottom"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom"]
 shape = SubResource( 1 )
 
-[node name="Left" type="StaticBody2D" parent="Borders"]
-position = Vector2( -10, 240 )
+[node name="Goals" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left"]
+[node name="Left" type="Area2D" parent="Goals"]
+position = Vector2( -10, 240 )
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goals/Left"]
 shape = SubResource( 2 )
 
-[node name="Right" type="StaticBody2D" parent="Borders"]
+[node name="Right" type="Area2D" parent="Goals"]
 position = Vector2( 730, 240 )
+collision_layer = 2
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goals/Right"]
 shape = SubResource( 2 )
 
 [node name="Puck" parent="." instance=ExtResource( 1 )]
 position = Vector2( 360, 240 )
+collision_layer = 8
+collision_mask = 7
 
 [node name="Paddle1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 10, 240 )
+collision_layer = 4
+collision_mask = 9
 
 [node name="Paddle2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 710, 240 )
+collision_layer = 4
+collision_mask = 9
+[connection signal="body_entered" from="Goals/Left" to="." method="_on_Left_body_entered"]
+[connection signal="body_entered" from="Goals/Right" to="." method="_on_Right_body_entered"]
