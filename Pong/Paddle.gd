@@ -6,12 +6,19 @@ var velocity = Vector2.ZERO
 var upKey = KEY_UP
 var downKey = KEY_DOWN
 
+var startPos
+
+func _ready():
+	startPos = position
+
+
 func set_keys(up, down):
 	upKey = up
 	downKey = down
 
-func _ready():
-	pass
+func reset():
+	position = startPos
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
